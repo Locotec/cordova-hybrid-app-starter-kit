@@ -1,0 +1,44 @@
+{
+  "name": "cordova-hybrid-app-starter-kit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "-- SHELL --": "",
+    "shell:dist:clean": "n-clean dist/device",
+    "shell:dist:mkdir": "mkdirp dist/device",
+    "shell:copy_static_files": "n-copy --source src/shell --destination dist/device \"*\"",
+    "shell:copy_static_files:watch": "nodemon -q --watch src/shell --ext html,css,js --exec \"npm run shell:copy_static_files\"",
+    "shell:init": "npm-run-all --serial shell:dist:clean shell:dist:mkdir",
+    "shell:server": "http-server dist/device -p 8000",
+    "shell:start": "npm-run-all --serial shell:init shell:copy_static_files --parallel shell:server shell:copy_static_files:watch",
+    "-- APP --": "",
+    "app:dist:clean": "n-clean dist/web",
+    "app:dist:mkdir": "mkdirp dist/web",
+    "app:copy_static_files": "n-copy --source src/app --destination dist/web/apps/SOME_APP_ID \"*\"",
+    "app:copy_static_files:watch": "nodemon -q --watch src/app --ext html,css,js --exec \"npm run app:copy_static_files\"",
+    "app:init": "npm-run-all --serial app:dist:clean app:dist:mkdir",
+    "app:server": "http-server dist/web -p 8001",
+    "app:start": "npm-run-all --serial app:init app:copy_static_files --parallel app:server app:copy_static_files:watch",
+    "-- GENERAL --": "",
+    "start": "npm-run-all --parallel shell:start app:start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barryels/cordova-hybrid-app-starter-kit.git"
+  },
+  "keywords": [],
+  "author": "Barry Els <barryels@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barryels/cordova-hybrid-app-starter-kit/issues"
+  },
+  "homepage": "https://github.com/barryels/cordova-hybrid-app-starter-kit#readme",
+  "devDependencies": {
+    "http-server": "^0.10.0",
+    "mkdirp": "^0.5.1",
+    "nodemon": "^1.12.4",
+    "npm-build-tools": "^2.2.5",
+    "npm-run-all": "^4.1.2"
+  }
+}

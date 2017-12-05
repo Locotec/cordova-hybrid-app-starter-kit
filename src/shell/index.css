@@ -1,0 +1,31 @@
+body {
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
+#shell {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+#shell #app-load-busy-container {
+	padding: 24px;
+	text-align: center;
+}
+
+#shell #app-load-busy-container.hidden {
+	display: none;
+}
+
+#shell #app-load-failed-container {
+	padding: 24px;
+	text-align: center;
+}
+
+#shell #app-load-failed-container.hidden {
+	display: none;
+}
